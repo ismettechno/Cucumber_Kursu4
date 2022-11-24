@@ -38,6 +38,7 @@ public class _01_LoginSteps {
     @Then("User should login successfuly")
     public void userShouldLoginSuccessfuly() {
         dc.findAndContainsText("txtTechnoStudy","Techno Study");
+        // TODO : accept kapatılacak
     }
 
 
