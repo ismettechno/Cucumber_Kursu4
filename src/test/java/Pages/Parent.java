@@ -45,9 +45,13 @@ public class Parent {
 
     public void verifyContainsTextFunction(WebElement element, String value)
     {
-        waitUntilVisible(element); // gözükene kadar bekle
+        //waitUntilVisible(element); // gözükene kadar bekle
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()),"The text you searched could'nt be find");
     }
 
-
 }
+
+// case sensitive, stringin bir parçası olabilir
+//wait.until(ExpectedCondition.textToBePresentInElement(By,"Looking4TextOnElement");//This verifies if text is present on element By.
+//wait.until(ExpectedCondition.textToBePresentInElementValue(By,"Looking4TextOnValueAttribute");//This verifies if text is present in value attribute of element By.

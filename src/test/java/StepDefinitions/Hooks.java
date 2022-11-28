@@ -18,6 +18,7 @@ public class Hooks {
         System.out.println("Senaryo bitti");
 
 
+
         GWD.quitDriver();
     }
 

@@ -39,6 +39,7 @@ public class _01_LoginSteps {
     public void userShouldLoginSuccessfuly() {
         dc.findAndContainsText("txtTechnoStudy","Techno Study");
         // TODO : accept kapatılacak
+        dc.findAndClick("acceptCookies");
     }
 
 

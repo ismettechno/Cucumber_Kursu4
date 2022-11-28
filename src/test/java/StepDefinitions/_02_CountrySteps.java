@@ -1,12 +1,15 @@
 package StepDefinitions;
 
+import Pages.DialogContent;
 import Pages.LeftNav;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class _02_CountrySteps {
     LeftNav ln=new LeftNav();
+    DialogContent dc=new DialogContent();
 
     @And("Navigate to country page")
     public void navigateToCountryPage() {
@@ -17,11 +20,17 @@ public class _02_CountrySteps {
 
     @When("create a country")
     public void createACountry() {
-        // TODO : createACountry
+        String randomGenName= RandomStringUtils.randomAlphanumeric(8);
+        String randomGenCode= RandomStringUtils.randomNumeric(4);
+
+        dc.findAndClick("addButton");
+        dc.findAndSend("nameInput", randomGenName);
+        dc.findAndSend("codeInput", randomGenCode);
+        dc.findAndClick("saveButton");
     }
 
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
-        // TODO : successMessageShouldBeDisplayed
+        dc.findAndContainsText("successMessage","success");
     }
 }
