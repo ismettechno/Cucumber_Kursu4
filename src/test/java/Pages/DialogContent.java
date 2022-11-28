@@ -42,6 +42,13 @@ public class DialogContent extends Parent{
     @FindBy(css="button[class='consent-give']")
     private WebElement acceptCookies;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName']//input")
+    private WebElement shortName;
+
+    @FindBy(xpath = "//div[contains(text(),'already exists')]")
+    private WebElement alreadyExist;
+
+
     WebElement myElement;
     public void findAndSend(String strlement, String value)
     {
@@ -52,6 +59,7 @@ public class DialogContent extends Parent{
              case "password" : myElement=password;break;
              case "nameInput" : myElement=nameInput;break;
              case "codeInput" : myElement=codeInput;break;
+             case "shortName" : myElement=shortName;break;
          }
 
          sendKeysFunction(myElement, value);
@@ -78,6 +86,7 @@ public class DialogContent extends Parent{
         {
             case "txtTechnoStudy" : myElement=txtTechnoStudy;break;
             case "successMessage" : myElement=successMessage;break;
+            case "alreadyExist" : myElement=alreadyExist;break;
 
         }
 
