@@ -29,4 +29,9 @@ public class _04_CitizenshipSteps {
     public void alreadyExistMessageShouldBeDisplayed() {
         dc.findAndContainsText("alreadyExist","already");
     }
+
+    @When("User delete the {string}")
+    public void userDeleteThe(String arananaKelime) {
+        dc.findAndDelete(arananaKelime);
+    }
 }
