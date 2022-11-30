@@ -49,7 +49,7 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//div[contains(text(),'already exists')]")
     private WebElement alreadyExist;
 
-    @FindBy(xpath = "(//ms-text-field//input)[1]")
+    @FindBy(xpath = "//mat-form-field//input[@data-placeholder='Name']")
     private WebElement searchInput;
 
     @FindBy(xpath = "//ms-search-button//button")
@@ -63,6 +63,15 @@ public class DialogContent extends Parent {
 
     @FindBy(xpath = "(//td[@role='cell'])[2]")
     private WebElement searchResultCell;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='budgetAccountIntegrationCode']//input")
+    private WebElement integrationCode;
+
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='priority']/input")
+    private WebElement priorityCode;
+
+    @FindBy(xpath="//mat-slide-toggle[@formcontrolname='active']")
+    private WebElement  toggleBar;
 
 
     WebElement myElement;
@@ -87,6 +96,12 @@ public class DialogContent extends Parent {
                 break;
             case "searchInput":
                 myElement = searchInput;
+                break;
+            case "integrationCode":
+                myElement = integrationCode;
+                break;
+            case "priorityCode":
+                myElement = priorityCode;
                 break;
         }
 
@@ -116,6 +131,9 @@ public class DialogContent extends Parent {
                 break;
             case "deleteDialogBtn":
                 myElement = deleteDialogBtn;
+                break;
+            case "toggleBar":
+                myElement = toggleBar;
                 break;
         }
 
@@ -150,8 +168,7 @@ public class DialogContent extends Parent {
 
         //wait.until(ExpectedConditions.stalenessOf(deleteButton)); stale zamanını yakalayamadım
         //wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//tbody[@role='rowgroup']//tr"),5));
-        findAndContainsText("searchResultCell",searchText); // arama sonuçlarının ilkinde arana
-                                                            // kelime gözükene kdar bekle
+        waitUntilLoading();
 
         findAndClick("deleteButton"); // silme butonua bas, çöp kutusu
         findAndClick("deleteDialogBtn"); // dilogdaki silme butonuna bas
