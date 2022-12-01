@@ -168,6 +168,7 @@ public class DialogContent extends Parent {
 
         //wait.until(ExpectedConditions.stalenessOf(deleteButton)); stale zamanını yakalayamadım
         //wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//tbody[@role='rowgroup']//tr"),5));
+        // progressbar ın çocukları 0 olana kadar bekle
         waitUntilLoading();
 
         findAndClick("deleteButton"); // silme butonua bas, çöp kutusu
