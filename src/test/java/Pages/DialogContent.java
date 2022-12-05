@@ -70,8 +70,8 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//ms-integer-field[@formcontrolname='priority']/input")
     private WebElement priorityCode;
 
-    @FindBy(xpath="//mat-slide-toggle[@formcontrolname='active']")
-    private WebElement  toggleBar;
+    @FindBy(xpath = "//mat-slide-toggle[@formcontrolname='active']")
+    private WebElement toggleBar;
 
 
     WebElement myElement;
@@ -168,8 +168,10 @@ public class DialogContent extends Parent {
 
         //wait.until(ExpectedConditions.stalenessOf(deleteButton)); stale zamanını yakalayamadım
         //wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//tbody[@role='rowgroup']//tr"),5));
-        // progressbar ın çocukları 0 olana kadar bekle
-        waitUntilLoading();
+
+        // findAndContainsText("searchResultCell", searchText); // arama sonuçlarının ilkinde aranan kelime gözükene kadar bekle.
+
+        waitUntilLoading(); // progressbar ın çocukları 0 olana kadar bekle
 
         findAndClick("deleteButton"); // silme butonua bas, çöp kutusu
         findAndClick("deleteDialogBtn"); // dilogdaki silme butonuna bas
