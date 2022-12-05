@@ -9,10 +9,15 @@ https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-usin
        <version>1.9.2</version>
    </dependency>
 
-2-  RunnerClass a plugin eklendi
+2-      public static WebDriver getDriver() {
+           // extend report türkçe bilg çalışmaması sebebiyle kondu
+           Locale.setDefault(new Locale("EN"));
+           System.setProperty("user.language", "EN");
+
+3-  RunnerClass a plugin eklendi
     plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 
-3- extent.properties dosyasi açılıp aşağıdaki 2 satır eklenir
+4- extent.properties dosyasi açılıp aşağıdaki 2 satır eklenir
 
    extent.reporter.spark.start=true
    extent.reporter.spark.out=test-output/SparkReport/Spark.html
