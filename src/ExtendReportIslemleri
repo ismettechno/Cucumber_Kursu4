@@ -94,6 +94,7 @@ https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-usin
    Sistem bilgileri en son ekleneceğinden Rapor için çalıştırılan RunnClass dan
    sonra yani test tamamen bitince yani RunnerClass dan sonra olması gerektiği
    için TestNG nin AfterClass Annotation a aşağıdaki şekilde eklenir.
+   https://www.toolsqa.com/selenium-cucumber-framework/cucumber-extent-report/
 
      @AfterClass // rapor bittiği zaman
          public static void writeExtentReport() {
@@ -109,5 +110,11 @@ https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-usin
              ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
          }
 
+8- Reportun PDF çıktısı için
+   https://www.programsbuzz.com/article/extent-pdf-report-cucumber-testng
+   extends.properties e aşağıdaki bölüm eklendi
 
+       #PDF Report
+       extent.reporter.pdf.start=true
+       extent.reporter.pdf.out=PdfReport.pdf
 
