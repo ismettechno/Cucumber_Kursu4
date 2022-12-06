@@ -1,0 +1,58 @@
+1- Aşağıdaki dependency yi POM.XML e ekliyoruz
+
+  <dependency>
+      <groupId>net.masterthought</groupId>
+      <artifactId>cucumber-reporting</artifactId>
+      <version>5.7.4</version>
+  </dependency>
+
+
+2- POM.XML e report plugin eklenir.
+
+<plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>2.8.0</version>
+
+    <executions>
+        <execution>
+            <id>execution</id>
+            <phase>test</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <projectName>Project Name</projectName>
+                <outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>
+                <cucumberOutput>${project.build.directory}/cucumber/cucumber.json</cucumberOutput>
+                <skippedFails>true</skippedFails>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+3- Bu reportu üretecek Runner class a aşağıdaki plugin eklenir.
+
+   plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}
+
+4- mvn test komutunun yukarıdaki RunnerClass a erişip çalıştırması için
+   maven a it çalıştırıcı plugin POM XML eklenir.
+
+                   <plugin><!--derlemek için-->
+                       <groupId>org.apache.maven.plugins</groupId>
+                       <artifactId>maven-surefire-plugin</artifactId>
+                       <version>3.0.0-M1</version>
+                       <configuration>
+
+                           <includes>
+                               <include>**/_08_TestRunnerMasterReport.java</include>
+                           </includes>
+                           <testFailureIgnore>true</testFailureIgnore>
+                       </configuration>
+                   </plugin>
+
+
+5- Maven menusunden test e tıklanır.
+
+6- Refresh your project and check inside \target\Report\cucumber-reports\cucumber-html-reports
+   that report generated with name feature-overview.
