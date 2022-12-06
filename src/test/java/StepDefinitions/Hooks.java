@@ -28,16 +28,18 @@ public class Hooks {
 
         if (senaryo.isFailed())
         {
-            TakesScreenshot ts= (TakesScreenshot) GWD.getDriver();
-            File hafizadakiHali=ts.getScreenshotAs(OutputType.FILE);
+            final byte[] byteHali=((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.BYTES);
+            senaryo.attach(byteHali, "image/png", "screenshot name");
 
-            LocalDateTime time=LocalDateTime.now();
-            DateTimeFormatter tf= DateTimeFormatter.ofPattern("dd_MM_YYHHmmss");
-            try {
-                FileUtils.copyFile(hafizadakiHali, new File("ekranGoruntuleri\\screenshot_"+time.format(tf)+".png"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            File hafizadakiHali=((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.FILE);
+//
+//            LocalDateTime time=LocalDateTime.now();
+//            DateTimeFormatter tf= DateTimeFormatter.ofPattern("dd_MM_YYHHmmss");
+//            try {
+//                FileUtils.copyFile(hafizadakiHali, new File("ekranGoruntuleri\\screenshot_"+time.format(tf)+".png"));
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
         }
         GWD.quitDriver();
     }
