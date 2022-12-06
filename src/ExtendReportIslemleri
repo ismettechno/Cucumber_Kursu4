@@ -38,6 +38,8 @@ https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-usin
       screenshot.rel.path=../screenshots/
 
 6- extend reports config file eklenmesi (thema-title-report name)
+   https://www.programsbuzz.com/article/cucumber-extent-report-config-file
+   https://www.toolsqa.com/selenium-cucumber-framework/cucumber-extent-report/
 
    a)  extend.properties e aşağıdakis atır eklenir
    extent.reporter.spark.config=src/test/resources/extent-config.xml
@@ -88,5 +90,24 @@ https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-usin
 
 
 
-7-
+7- Extra sistem info bilgileri ve açıklamalar istenirse aşağıdaki şekilde eklenebilir.
+   Sistem bilgileri en son ekleneceğinden Rapor için çalıştırılan RunnClass dan
+   sonra yani test tamamen bitince yani RunnerClass dan sonra olması gerektiği
+   için TestNG nin AfterClass Annotation a aşağıdaki şekilde eklenir.
+
+     @AfterClass // rapor bittiği zaman
+         public static void writeExtentReport() {
+             ExtentService.getInstance().setSystemInfo("Windows User Name", System.getProperty("user.name"));
+             ExtentService.getInstance().setSystemInfo("Time Zone", System.getProperty("user.timezone"));
+             ExtentService.getInstance().setSystemInfo("User Name", "İsmet Temur");
+             ExtentService.getInstance().setSystemInfo("Application Name", "Campus");
+             ExtentService.getInstance().setSystemInfo("Operating System Info", System.getProperty("os.name"));
+             ExtentService.getInstance().setSystemInfo("Department", "QA");
+             ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
+             ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
+             ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
+             ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
+         }
+
+
 
