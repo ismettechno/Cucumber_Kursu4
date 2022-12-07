@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@Regression",
         features = {"src/test/java/FeatureFiles"},
         glue = {"StepDefinitions"},
-        plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}
+        plugin= {"pretty","html:target/site/cucumber-pretty.html","json:target/cucumber/cucumber.json"}
 )
 public class _08_TestRunnerMasterReport extends AbstractTestNGCucumberTests {
 

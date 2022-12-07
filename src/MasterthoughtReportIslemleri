@@ -56,3 +56,34 @@
 
 6- Refresh your project and check inside \target\Report\cucumber-reports\cucumber-html-reports
    that report generated with name feature-overview.
+
+
+
+ek bilgi.
+   // intellij yeni güncellemsi ile gelen soruna çözüm
+   test fail vermiyorken raporda tablolar geliyrdu
+   test fail verdiğinde rapor tabloları vermiyordu
+   https://javalibs.com/plugin/net.masterthought/maven-cucumber-reporting
+
+                <plugin>
+                   <groupId>net.masterthought</groupId>
+                   <artifactId>maven-cucumber-reporting</artifactId>
+                   <version>5.7.0</version>
+                   <executions>
+                       <execution>
+                           <id>execution</id>
+                           <phase>test</phase>
+                           <goals>
+                               <goal>generate</goal>
+                           </goals>
+                           <configuration>
+                               <projectName>Cucumber HTML Reports</projectName>
+                               <outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>
+                               <inputDirectory>${project.build.directory}</inputDirectory>
+                               <jsonFiles>
+                                   <param>**/cucumber*.json</param>
+                               </jsonFiles>
+                           </configuration>
+                       </execution>
+                   </executions>
+               </plugin>
