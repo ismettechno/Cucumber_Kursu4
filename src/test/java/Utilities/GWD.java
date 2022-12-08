@@ -37,6 +37,9 @@ public class GWD {
         Logger.getLogger("").setLevel(Level.SEVERE);
         System.setProperty(org.slf4j.simple.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "Error");
 
+        if (threadBrowserName.get() == null) // paralel çalışmayan yani XML den parametreyle gelmeyen ger çağıran
+            threadBrowserName.set("chrome"); // Basic araynlar için
+
         if (threadDriver.get() == null) { // Şu andaki yani bu thread deki driver ım boş mu ?
             //driverı start et doldur, başlat ve gönder
 
