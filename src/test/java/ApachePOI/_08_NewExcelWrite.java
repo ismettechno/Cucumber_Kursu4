@@ -1,18 +1,21 @@
 package ApachePOI;
 
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class _07_WriteInTheExcel {
+public class _08_NewExcelWrite {
     public static void main(String[] args) throws IOException {
-        // var olan Excel e yazma işlemi
-        String path="src/test/java/ApachePOI/resource/WriteInTheExcelFile.xlsx";
-        FileInputStream inputStream=new FileInputStream(path); // dosya okuma modu açıldı
-        Workbook workbook= WorkbookFactory.create(inputStream); // exceldeki workbook hafızaya aldı
-        Sheet sheet=workbook.getSheetAt(0);
+
+         // Workbook varolan excelin workbook u idi, bunu oluşmamış bir excel için kullanamıyoruz
+
+        XSSFWorkbook workbook= new XSSFWorkbook(); // hafızada bir workbook oluşturuldu
+        XSSFSheet sheet=workbook.createSheet("Sayfa1"); // içinde sheet oluşturdum
 
         // HAFIZADA işlemlere devam ediliyor
         Row yeniSatir=sheet.createRow(0); // hafızada satır oluşturuldu 0.yerde
@@ -23,14 +26,13 @@ public class _07_WriteInTheExcel {
             yeniSatir.createCell(i).setCellValue(i);  // Merhaba Dünya 1 2 3 4 5 6 7 8 9
         }
 
-        // sıra kaydetmeye geldi, bütün bilgiler hafızada buraya kadar, her şey WORKBOOK da
-        inputStream.close(); // okuma modu , kanalı kapatılıyor.
-
-         // Yazma işlemini YAZMA modunda açıp öyle yapacağız.(SAVE)
+        // Yazma işlemini YAZMA modunda açıp öyle yapacağız.(SAVE)
+        String path="src/test/java/ApachePOI/resource/YeniExcel.xlsx";
         FileOutputStream outputStream = new FileOutputStream(path);
         workbook.write(outputStream); // workbook excel dosyasına yazıldı (save)
         workbook.close(); // workbook için ayrılan hafıza boşaltıldı. (excel kapatıldı)
         outputStream.close(); // yazma için açılan kanal kapatıldı. (program excel kanalı kapatıldı)
         System.out.println("işlem tamamlandı");
+
     }
 }
