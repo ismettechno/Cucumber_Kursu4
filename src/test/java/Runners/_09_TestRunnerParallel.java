@@ -1,8 +1,10 @@
 package Runners;
 
 import Utilities.GWD;
+import com.aventstack.extentreports.service.ExtentService;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -20,5 +22,7 @@ public class _09_TestRunnerParallel extends AbstractTestNGCucumberTests {
         // borwser türünü GWD ye gönder
         GWD.setThreadBrowserName(browser);
     }
+
+
 
 }

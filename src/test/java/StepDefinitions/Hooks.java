@@ -29,8 +29,8 @@ public class Hooks {
         if (senaryo.isFailed()) // senaryo bittiğinde
         {
 //            Extend report için diğer durumlarda kaldıralım
-//            final byte[] byteHali=((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.BYTES);
-//            senaryo.attach(byteHali, "image/png", "screenshot name");
+            final byte[] byteHali=((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.BYTES);
+            senaryo.attach(byteHali, "image/png", "screenshot name");
 
 //            File hafizadakiHali=((TakesScreenshot) GWD.getDriver()).getScreenshotAs(OutputType.FILE);
 //
