@@ -34,8 +34,10 @@ public class _06_ApachePOISteps {
                         "testCitizen", 1);
 
         for (ArrayList<String> satir : tablo) {
+
             dc.findAndDelete(satir.get(0));
             dc.findAndContainsText("successMessage", "success");
+
         }
     }
 }

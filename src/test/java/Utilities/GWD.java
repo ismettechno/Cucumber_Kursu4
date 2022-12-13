@@ -91,5 +91,8 @@ public class GWD {
         GWD.threadBrowserName.set(browserName);
     }
 
+    public static String getThreadBrowserName() {
+       return GWD.threadBrowserName.get();
+    }
 
 }

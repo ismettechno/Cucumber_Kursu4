@@ -28,6 +28,10 @@ public class Hooks {
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter tf = DateTimeFormatter.ofPattern("dd_MM_YYHHmmss");
 
+        // Senaryoların sonuçlarını bir excel formatından yazdırmak istiyorum
+        ExcelUtility.writeToExcel("src/test/java/ApachePOI/resource/ScenarioStatus.xlsx",
+                senaryo, GWD.getThreadBrowserName(), time.format(tf));
+
         if (senaryo.isFailed()) // senaryo bittiğinde
         {
 //            Extend report için diğer durumlarda kaldıralım

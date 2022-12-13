@@ -1,11 +1,13 @@
 package Utilities;
 
 import io.cucumber.java.Scenario;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class ExcelUtility {
@@ -40,6 +42,49 @@ public class ExcelUtility {
         return tablo;
     }
 
+    public static void writeToExcel(String path, Scenario senaryo, String browserName, String time){
+
+        File f=new File(path);
+
+        if (!f.exists()){ // yok ise
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet= workbook.createSheet("CampusTest");
+            // workbook-sheet-row-cell
+            Row yeniSatir=sheet.createRow(0);
+
+            Cell yeniHucre=yeniSatir.createCell(0);
+            yeniHucre.setCellValue(senaryo.getName());
+
+            yeniHucre=yeniSatir.createCell(1);
+            yeniHucre.setCellValue(senaryo.getStatus().toString());
+
+            yeniHucre=yeniSatir.createCell(2);
+            yeniHucre.setCellValue(browserName);
+
+            yeniHucre=yeniSatir.createCell(3);
+            yeniHucre.setCellValue(time);
+
+            // file save
+            try {
+                FileOutputStream outputStream = new FileOutputStream(path);
+                workbook.write(outputStream);
+                workbook.close();
+                outputStream.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        else // var ise
+        {
+
+
+        }
+
+
+
+    }
 
 
     // fonksiyonu çağırıp test yapmak için kullanacağımız main
