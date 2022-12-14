@@ -78,7 +78,46 @@ public class ExcelUtility {
         }
         else // var ise
         {
+            Sheet sheet=null;
+            Workbook workbook=null;
+            FileInputStream inputStream=null;
+            try {
+                inputStream = new FileInputStream(path);
+                workbook = WorkbookFactory.create(inputStream);
+                sheet = workbook.getSheetAt(0);
+            }catch(Exception e)
+            {
+                System.out.println("e.getMessage() = " + e.getMessage());
+            }
 
+            // workbook-sheet-row-cell
+            int enSonSatirSayisi= sheet.getPhysicalNumberOfRows(); // 5 satır: 0,1,2,3,4
+            Row yeniSatir=sheet.createRow(enSonSatirSayisi); // 5 indexli satir böylece yeni satır
+
+            Cell yeniHucre=yeniSatir.createCell(0);
+            yeniHucre.setCellValue(senaryo.getName());
+
+            yeniHucre=yeniSatir.createCell(1);
+            yeniHucre.setCellValue(senaryo.getStatus().toString());
+
+            yeniHucre=yeniSatir.createCell(2);
+            yeniHucre.setCellValue(browserName);
+
+            yeniHucre=yeniSatir.createCell(3);
+            yeniHucre.setCellValue(time);
+
+            // file save
+            try {
+                inputStream.close();
+                FileOutputStream outputStream = new FileOutputStream(path);
+                workbook.write(outputStream);
+                workbook.close();
+                outputStream.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
 
         }
 
