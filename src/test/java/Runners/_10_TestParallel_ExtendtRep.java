@@ -16,7 +16,7 @@ import org.testng.annotations.Parameters;
 )
 public class _10_TestParallel_ExtendtRep extends AbstractTestNGCucumberTests {
 
-    @BeforeClass
+    @BeforeClass()
     @Parameters("browser")
     public void beforeClass(String browser)
     {
@@ -38,3 +38,7 @@ public class _10_TestParallel_ExtendtRep extends AbstractTestNGCucumberTests {
         ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
     }
 }
+
+
+
+
