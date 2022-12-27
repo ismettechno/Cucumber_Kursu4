@@ -23,4 +23,29 @@ public class _04_Soru extends JDBCParent {
         System.out.println("cnt = " + cnt);
     }
 
+    @Test
+    public void test2() throws SQLException {
+        ResultSet rs=statement.executeQuery("select * from city");
+
+        int cnt=1;
+        while(rs.absolute(cnt)){ // verilen satir numarasına kursoru konumlandırır
+            System.out.println(rs.getString("city"));
+            cnt++;
+        }
+        System.out.println("cnt = " + (cnt-1));
+    }
+
+    @Test
+    public void test3() throws SQLException {
+        ResultSet rs=statement.executeQuery("select * from city");
+
+        int cnt=0;
+        while(rs.relative(1)){ // bulunduğu yereden 1 satır sonraya gider
+            System.out.println(rs.getString("city"));
+            cnt++;
+        }
+        System.out.println("cnt = " + cnt);
+    }
+
+
 }
